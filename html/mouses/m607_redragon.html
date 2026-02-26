@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>SCA Periféricos</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="icon" type="image/png" href="../../img/saocarloslogo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div id="logo">
+            <img src="../../img/saocarloslogo.png" alt="Logo" width="100" height="100">
+        </div>
+    <nav>
+        <ul>
+            <li><a href="../../index.html" class="menu-alt">Início</a></li>
+            <li><a href="../teclados.html" class="menu-alt">Teclados</a></li>
+            <li><a href="mouses.html" class="menu-alt">Mouses</a></li>
+            <li><a href="../fones.html" class="menu-alt">Fones de Ouvido</a></li>
+            <li><a href="../contato.html" class="menu-alt">Contato e Localização</a></li>
+        </ul>
+    </nav>
+    </header>
+    <main>
+        <h1>Redragon Griffin M607!</h1>
+        <section class="produto-pagina">
+            <div class="produto-imagem">
+                <img src="../../img/m607_redragon.webp" id="banner_produto" width="515" height="500" alt="Banner">
+            <div class="produto-side">
+                <div class="produto-descricao">
+                    <h3>Redragon Griffin M607:</h3>
+                    <p>O Redragon Griffin M607 é um mouse custo-benefício certeiro: resistente, funcional e pronto para PC ou notebook. Tem precisão, iluminação RGB e ergonomia simples — ideal pra quem busca praticidade no dia a dia ou nos jogos.</p>
+                    <p><strong>R$: 99,00</strong></p>
+                    <button onclick="adicionar_carrinho()" id="button-section1"><i>Adicionar ao carrinho</i></button>
+                </div>
+                <div class="produto-descricao">
+                    <h3>Vídeo de Apresentação:</h3>
+                        <iframe style="width:100%; max-width:500px; height:200px;" src="https://www.youtube.com/embed/MoYc_6h3pN8" title="Mouse Gamer Griffin | 7200DPI e Sensor Pixart PAW3212 | Análise" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+        <div id="buttons_banner">
+                    <button id="button-retorno" type="button" aria-label="Anterior">←</button>
+                    <button id="button-avanco" type="button" aria-label="Próximo">→</button>
+        </div>
+        <div class="produto-descricao">                                                                                                                                                                
+            <div class="produto-visao-geral">
+                <h3>Visão Geral</h3>
+                <p>O Griffin M607 é a opção “custo-benefício raiz”: ele entrega o essencial e faz bem feito. Com sensor confiável, iluminação RGB e construção simples, dá conta do recado tanto no PC do dia a dia quanto em jogos casuais. A pegada é confortável e o mouse costuma ser robusto — ideal pra quem quer praticidade sem gastar muito. Não é “top de linha”, mas funciona bem na real. Se o setup é simples ou você quer um mouse de entrada decente, ele se encaixa direitinho.</p>
+            </div>
+        </div>
+            <div class="produto-especificacoes">
+                <h4>Especificações Técnicas – Redragon Griffin M607</h4>
+                    <ul>
+                        <li>Sensor: Óptico padrão, com boa precisão para uso geral</li>
+                        <li>DPI: até ~7200 DPI (dependendo da versão)</li>
+                        <li>Polling Rate: 1000 Hz</li>
+                        <li>Botões: 7 (incluindo laterais e scroll)</li>
+                        <li>Iluminação: RGB básica</li>
+                        <li>Conexão: Fio USB</li>
+                        <li>Formato: Ergonomia simples — conforto para uso cotidiano</li>
+                        <li>Peso aproximado: ~130–140 g (mais “robusto” que os leves)</li>
+                        <li>Uso indicado: escritório, navegação, estudos, jogos casuais, tarefas diárias</li>
+                    </ul>
+            </div>
+        </section>
+        <h2 id="produto">Outros dos nossos produtos: </h2>
+        <section id="area_segundaria">
+            <div id="caixaesquerda">
+                <div class="produtos">
+                    <div class="imagem-produto">
+                        <img src="../../img/teclado.jpg" alt="Produto 1" width="200" height="200">
+                    </div>
+                    <p class="titulo_produto">Teclados</p>
+                    <p class="descricao-produto">Teclados mecânicos, RGB, e muito mais!</p>
+                        <button onclick="location.href='../../html/teclados.html'" id="button-section1"><i>Ver Mais</i></button>
+                </div>
+            </div>
+            <div id="caixacentral">
+                <div class="produtos">
+                    <div class="imagem-produto">
+                        <img src="../../img/mouse.png" alt="Produto 2" width="200" height="200">
+                    </div>
+                    <p class="titulo_produto">Mouses</p>
+                    <p class="descricao-produto">Mouses ergonômicos, com alta precisão e design moderno.</p>
+                        <button onclick="location.href='../../html/mouses.html'" id="button-section2"><i>Ver Mais</i></button>
+                </div>
+            </div>
+            <div id="caixadireita">
+                <div class="produtos">
+                    <div class="imagem-produto">
+                        <img src="../../img/fone.jpg" alt="Produto 3" width="200" height="200">
+                    </div>
+                    <p class="titulo_produto">Fones de Ouvido</p>
+                    <p class="descricao-produto">Fones de ouvido com cancelamento de ruído e som de alta qualidade.</p>
+                        <button onclick="location.href='../../html/fones.html'" id="button-section3"><i>Ver Mais</i></button>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+            <p>&copy; Desenvolvido por Bernardo Girardi Frigeri - Senac 2025</p>
+    </footer>
+<script src="../../js/m607_redragon.js"></script>
+</body>
+</html>

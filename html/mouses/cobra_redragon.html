@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>SCA Periféricos</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="icon" type="image/png" href="../../img/saocarloslogo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div id="logo">
+            <img src="../../img/saocarloslogo.png" alt="Logo" width="100" height="100">
+        </div>
+    <nav>
+        <ul>
+            <li><a href="../../index.html" class="menu-alt">Início</a></li>
+            <li><a href="../teclados.html" class="menu-alt">Teclados</a></li>
+            <li><a href="mouses.html" class="menu-alt">Mouses</a></li>
+            <li><a href="../fones.html" class="menu-alt">Fones de Ouvido</a></li>
+            <li><a href="../contato.html" class="menu-alt">Contato e Localização</a></li>
+        </ul>
+    </nav>
+    </header>
+    <main>
+        <h1>Mouse Redragon Cobra!</h1>
+        <section class="produto-pagina">
+            <div class="produto-imagem">
+                <img src="../../img/cobra_redragon.webp" id="banner_produto" width="515" height="500" alt="Banner">
+            <div class="produto-side">
+                <div class="produto-descricao">
+                    <h3>Mouse Redragon Cobra</h3>
+                    <p>Mouse ergonômico com alta precisão, iluminação RGB e design confortável — ideal para jogos e uso diário.</p>
+                    <p><strong>R$: 109,99</strong></p>
+                    <button onclick="adicionar_carrinho()" id="button-section1"><i>Adicionar ao carrinho</i></button>
+                </div>
+                <div class="produto-descricao-pro">
+                    <h3>Mouse Redragon Cobra Pro</h3>
+                    <p>Mouse ergonômico com alta precisão, iluminação RGB e design confortável — ideal para jogos e uso diário. A versão Pro inclui recursos adicionais e opção sem fio, oferecendo uma experiência mais prática e responsiva.</p>
+                    <p><strong>R$: 299,00</strong></p>
+                    <button onclick="adicionar_carrinho()" id="button-section1"><i>Adicionar ao carrinho</i></button>
+                </div>
+            </div>
+        </div>
+        <div id="buttons_banner">
+                    <button id="button-retorno" type="button" aria-label="Anterior">←</button>
+                    <button id="button-avanco" type="button" aria-label="Próximo">→</button>
+        </div>
+        <div class="produto-descricao">
+                <h3>Visão Geral</h3>
+                <p>O Redragon Cobra combina ergonomia refinada com uma experiência de precisão pensada para quem busca desempenho e estilo no setup. Seu design oferece conforto contínuo, enquanto a iluminação RGB personalizável cria uma presença marcante na mesa. Com ajustes de sensibilidade e comandos extras ao alcance dos dedos, o Cobra entrega controle ágil tanto em jogos quanto nas tarefas do dia a dia — um mouse versátil para quem exige mais do que o básico.</p>
+            </div>
+            <div class="produto-especificacoes">
+                <h4>Especificações Técnicas – Cobra M711 (clássico):</h4>
+                    <ul>
+                        <li>Sensor: Óptico Pixart PMW3325</li>
+                        <li>DPI máximo: até 10.000 DPI</li>
+                        <li>Polling Rate: até 1000 Hz</li>
+                        <li>Botões Programáveis: 7 (ou 8 dependendo da versão)</li>
+                        <li>Iluminação: RGB ajustável (Chroma / RGB)</li>
+                        <li>Conexão: Com fio — cabo USB trançado ~1,8 m</li>
+                        <li>Peso: aproximadamente 130g</li>
+                        <li>Formato: Ergonômico, com base de pés de teflon para deslize suave</li>
+                    </ul>
+                <h4>Especificações Técnicas – Cobra Pro M711-PRO:</h4>
+                    <ul>
+                        <li>Sensor: Óptico Pixart PAW3335</li>
+                        <li>DPI máximo: até 16.000 DPI</li>
+                        <li>Polling Rate: até 1000 Hz</li>
+                        <li>Botões Programáveis: 8</li>
+                        <li>Iluminação: RGB Redragon Chroma Mk. II</li>
+                        <li>Conectividade: Wireless via dongle USB ou cabeado via USB-C removível (cabo Paracord SpeedFlex de 1,8 m)</li>
+                        <li>Peso: aproximadamente 100g</li>
+                        <li>Shape: Ergonômico</li>
+                        <li>Switches: Huano 20M cliques</li>
+                        <li>Bateria interna: 700 mAh — autonomia de até ~6 dias em uso (sem fio)</li>
+                    </ul>
+            </div>
+        </section>
+        <h2 id="produto">Outros dos nossos produtos: </h2>
+        <section id="area_segundaria">
+            <div id="caixaesquerda">
+                <div class="produtos">
+                    <div class="imagem-produto">
+                        <img src="../../img/teclado.jpg" alt="Produto 1" width="200" height="200">
+                    </div>
+                    <p class="titulo_produto">Teclados</p>
+                    <p class="descricao-produto">Teclados mecânicos, RGB, e muito mais!</p>
+                        <button onclick="location.href='../../html/teclados.html'" id="button-section1"><i>Ver Mais</i></button>
+                </div>
+            </div>
+            <div id="caixacentral">
+                <div class="produtos">
+                    <div class="imagem-produto">
+                        <img src="../../img/mouse.png" alt="Produto 2" width="200" height="200">
+                    </div>
+                    <p class="titulo_produto">Mouses</p>
+                    <p class="descricao-produto">Mouses ergonômicos, com alta precisão e design moderno.</p>
+                        <button onclick="location.href='../../html/mouses.html'" id="button-section2"><i>Ver Mais</i></button>
+                </div>
+            </div>
+            <div id="caixadireita">
+                <div class="produtos">
+                    <div class="imagem-produto">
+                        <img src="../../img/fone.jpg" alt="Produto 3" width="200" height="200">
+                    </div>
+                    <p class="titulo_produto">Fones de Ouvido</p>
+                    <p class="descricao-produto">Fones de ouvido com cancelamento de ruído e som de alta qualidade.</p>
+                        <button onclick="location.href='../../html/fones.html'" id="button-section3"><i>Ver Mais</i></button>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+            <p>&copy; Desenvolvido por Bernardo Girardi Frigeri - Senac 2025</p>
+    </footer>
+<script src="../../js/cobra_redragon.js"></script>
+</body>
+</html>

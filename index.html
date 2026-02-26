@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>SCA Periféricos</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/png" href="img/saocarloslogo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div id="logo">
+            <img src="img/saocarloslogo.png" alt="Logo" width="100" height="100">
+        </div>
+    <nav>
+        <ul>
+            <li><a href="html/teclados.html" class="menu-alt">Teclados</a></li>
+            <li><a href="html/mouses.html" class="menu-alt">Mouses</a></li>
+            <li><a href="html/fones.html" class="menu-alt">Fones de Ouvido</a></li>
+            <li><a href="html/contato.html" class="menu-alt">Contato e Localização</a></li>
+        </ul>
+    </nav>
+    </header>
+    <main>
+        <h1>PROMOÇÕES de 50% OFF!</h1>
+        <section id="area_principal">
+            <aside>
+                <p><i>Teclado Montech Mkey Pro 75</i></p>
+                    <img src="img/teclado.jpg" id="banner_left" alt="Banner Left" style="border-radius: 10px; width:240px; height:250px;">
+                <p style="font-size: large;"><i><br><b>De R$: 299,00</b> por <em>R$: 149,00</em></i></p>
+                <br>
+                <button onclick="location.href='html/teclados/mkeypro75.html'"><i>Mais informações</i></button>
+            </aside>
+            <div id="area_banner">
+                <img src="img/aulaf75.webp" id="banner" width="515" height="500" alt="Banner">
+                <div id="buttons_banner">
+                    <button id="button-retorno" type="button" aria-label="Anterior">←</button>
+                    <button id="button-avanco" type="button" aria-label="Próximo">→</button>
+                </div>
+            </div>
+            <aside id="banner_desc" aria-live="polite">
+                <h3 id="banner-title">Teclado Aula F75</h3>
+                <p id="banner-text">Teclado mecânico compacto, switches hot-swap, iluminação RGB e construção robusta — ideal para produtividade e jogos.</p>
+                <p id="banner-price"><strong>R$ 249,00</strong></p>
+                <button id="banner-more" type="button">Mais informações</button>
+            </aside>
+        </section>
+        <h2>Nossos produtos!</h2>
+        <section id="area_segundaria">
+            <div id="caixaesquerda">
+                <div class="produtos">
+                    <div class="imagem-produto">
+                        <img src="img/teclado.jpg" alt="Produto 1" width="200" height="200">
+                    </div>
+                    <p class="titulo_produto">Teclados</p>
+                    <p class="descricao-produto">Teclados mecânicos, RGB, e muito mais!</p>
+                        <button onclick="location.href='html/teclados.html'" id="button-section1"><i>Ver Mais</i></button>
+                </div>
+            </div>
+            <div id="caixacentral">
+                <div class="produtos">
+                    <div class="imagem-produto">
+                        <img src="img/mouse.png" alt="Produto 2" width="200" height="200">
+                    </div>
+                    <p class="titulo_produto">Mouses</p>
+                    <p class="descricao-produto">Mouses ergonômicos, com alta precisão e design moderno.</p>
+                        <button onclick="location.href='html/mouses.html'" id="button-section2"><i>Ver Mais</i></button>
+                </div>
+            </div>
+            <div id="caixadireita">
+                <div class="produtos">
+                    <div class="imagem-produto">
+                        <img src="img/fone.jpg" alt="Produto 3" width="200" height="200">
+                    </div>
+                    <p class="titulo_produto">Fones de Ouvido</p>
+                    <p class="descricao-produto">Fones de ouvido com cancelamento de ruído e som de alta qualidade.</p>
+                        <button onclick="location.href='html/fones.html'" id="button-section3"><i>Ver Mais</i></button>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+            <p>&copy; Desenvolvido por Bernardo Girardi Frigeri - Senac 2025</p>
+    </footer>
+<script src="js/script.js"></script>
+</body>
+</html>

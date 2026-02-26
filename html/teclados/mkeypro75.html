@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>SCA Periféricos</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="icon" type="image/png" href="imagens/saocarloslogo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div id="logo">
+            <img src="../../img/saocarloslogo.png" alt="Logo" width="100" height="100">
+        </div>
+    <nav>
+        <ul>
+            <li><a href="../../index.html" class="menu-alt">Início</a></li>
+            <li><a href="../teclados.html" class="menu-alt">Teclados</a></li>
+            <li><a href="../mouses.html" class="menu-alt">Mouses</a></li>
+            <li><a href="../fones.html" class="menu-alt">Fones de Ouvido</a></li>
+            <li><a href="../contato.html" class="menu-alt">Contato e Localização</a></li>
+        </ul>
+    </nav>
+    </header>
+    <main>
+        <h1>Teclado mecânico Montech Mkey Pro 75!</h1>
+        <section class="produto-pagina">
+            <div class="produto-imagem">
+                <img src="../../img/teclado.jpg" id="banner_produto" width="515" height="500" alt="Banner">
+            <div class="produto-side">
+                <div class="produto-descricao">
+                    <h3>Teclado Montech Mkey Pro 75</h3>
+                    <p>Teclado mecânico compacto (formato 75%), com switches hot-swap, iluminação ARGB, construção robusta e conexão tri-modo — ideal para produtividade e jogos.</p>
+                    <p><strong>De <s>R$: 599,99</s> por R$: 299,99</strong></p>
+                    <button onclick="adicionar_carrinho()" id="button-section1"><i>Adicionar ao carrinho</i></button>
+                </div>
+                <div class="produto-descricao">
+                    <h3>Vídeo de Apresentação:</h3>
+                    <iframe style="width:100%; max-width:500px; height:200px;" src="https://www.youtube.com/embed/5rtt7ChQcZM?si=s1XHmTa7lkNpXxLd" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+        <div id="buttons_banner">
+                    <button id="button-retorno" type="button" aria-label="Anterior">←</button>
+                    <button id="button-avanco" type="button" aria-label="Próximo">→</button>
+        </div>
+        <div class="produto-descricao">
+                <h3>Visão Geral</h3>
+                <p>O Teclado mecânico Montech Mkey Pro 75 é um teclado compacto (formato 75%), com switches hot-swap e keycaps PBT, design com montagem “gasket” e acolchoamento para digitação suave e som mais limpo, iluminação ARGB com dezenas de modos, knob multifuncional para controle de volume/ iluminação/zoom, e conectividade tri-modo (USB-C, wireless 2.4 GHz ou Bluetooth) — robusto e versátil, ideal para produtividade e jogos. Versão PRO traz ainda mais recursos, como durabilidade de bateria estendida, maior conforto ao digitar, personalização via software QMK/VIA e construção refinada, tudo pensado para quem quer performance e flexibilidade num único teclado.</p>
+            </div>
+            <div class="produto-especificacoes">
+                <h4>Especificações Técnicas:</h4>
+                    <ul>
+                        <li>Switches: Gateron G Pro 3.0 (Hot-Swap)</li>
+                        <li>Iluminação: ARGB com vários modos</li>
+                        <li>Keycaps: PBT Double-Shot</li>
+                        <li>Conectividade: USB-C, Wireless 2.4GHz e Bluetooth 5.2</li>
+                        <li>Bateria: Até ~300 horas (sem RGB)</li>
+                        <li>Construção: Montagem Gasket + espumas internas</li>
+                        <li>Layout: 75% (81 teclas)</li>
+                        <li>Peso: Cerca de 900g</li>
+                        <li>Compatibilidade: Windows, macOS, Linux</li>
+                        <li>Recursos Extras: Knob multifuncional, suporte VIA/QMK</li>
+                        <li>Cores: Freedom (claro) e Darkness (escuro)</li>
+                    </ul>
+            </div>
+        </section>
+        <h2 id="produto">Outros dos nossos produtos: </h2>
+        <section id="area_segundaria">
+            <div id="caixaesquerda">
+                <div class="produtos">
+                    <div class="imagem-produto">
+                        <img src="../../img/teclado.jpg" alt="Produto 1" width="200" height="200">
+                    </div>
+                    <p class="titulo_produto">Teclados</p>
+                    <p class="descricao-produto">Teclados mecânicos, RGB, e muito mais!</p>
+                        <button onclick="location.href='../../html/teclados.html'" id="button-section1"><i>Ver Mais</i></button>
+                </div>
+            </div>
+            <div id="caixacentral">
+                <div class="produtos">
+                    <div class="imagem-produto">
+                        <img src="../../img/mouse.png" alt="Produto 2" width="200" height="200">
+                    </div>
+                    <p class="titulo_produto">Mouses</p>
+                    <p class="descricao-produto">Mouses ergonômicos, com alta precisão e design moderno.</p>
+                        <button onclick="location.href='../../html/mouses.html'" id="button-section2"><i>Ver Mais</i></button>
+                </div>
+            </div>
+            <div id="caixadireita">
+                <div class="produtos">
+                    <div class="imagem-produto">
+                        <img src="../../img/fone.jpg" alt="Produto 3" width="200" height="200">
+                    </div>
+                    <p class="titulo_produto">Fones de Ouvido</p>
+                    <p class="descricao-produto">Fones de ouvido com cancelamento de ruído e som de alta qualidade.</p>
+                        <button onclick="location.href='../../html/fones.html'" id="button-section3"><i>Ver Mais</i></button>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+            <p>&copy; Desenvolvido por Bernardo Girardi Frigeri - Senac 2025</p>
+    </footer>
+<script src="../../js/mkeypro75.js"></script>
+</body>
+</html>
