@@ -72,6 +72,20 @@ nav ul li ul {
     top: 100%;
     background-color: transparent;
     border-radius: 6px;}
+#carrinho-conf {
+    background-color: lightcoral;
+    color: black;
+    padding: 6px 10px;
+    border-radius: 8px;
+    font-size: 20px;
+    transition: color 200ms ease, background-color 200ms ease, transform 120ms ease;}
+#carrinho-conf:hover {
+    background-color: lightblue;
+    color: red;
+    padding: 6px 10px;
+    border-radius: 8px;
+    font-size: 20px;
+    transition: color 200ms ease, background-color 200ms ease, transform 120ms ease;}
 #area_principal { 
     display:flex; 
     justify-content:center; 
