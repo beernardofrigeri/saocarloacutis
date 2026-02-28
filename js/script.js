@@ -1,7 +1,7 @@
 var imagens = [
-    "../../img/aulaf75.webp",
-    "../../img/g305.webp",
-    "../../img/g733.webp"
+    "img/aulaf75.webp",
+    "img/g305.webp",
+    "img/g733.webp"
 ];
 var descricoes = [
     { title: "Teclado Aula F75", text: "Teclado mecânico compacto, switches hot-swap e iluminação RGB. Perfeito para produtividade e jogos.", price: "R$ 249,00" },
@@ -81,8 +81,135 @@ function prevImage() {
     indice = (indice - 1 + imagens.length) % imagens.length;
     mostrarImagem();
 }
-function adicionar_carrinho() {
-    alert("Produto adicionado ao carrinho!");
+// shopping cart helpers ------------------------------------------------
+function getCart() {
+    return JSON.parse(localStorage.getItem('cart') || '[]');
 }
+function saveCart(cart) {
+    localStorage.setItem('cart', JSON.stringify(cart));
+}
+function addToCart(product) {
+    if (!product || !product.id) return;
+    let cart = getCart();
+    let existing = cart.find(p => p.id === product.id);
+    if (existing) {
+        existing.qty = (existing.qty || 0) + 1;
+    } else {
+        cart.push({ ...product, qty: 1 });
+    }
+    saveCart(cart);
+    alert('Produto adicionado ao carrinho!');
+}
+
+// called by product pages if they still use the old onclick style
+function adicionar_carrinho() {
+    // this function is kept for backwards compatibility; it expects a button
+    // with data-* attributes describing the product.
+    let btn = event.currentTarget || null;
+    if (!btn) return;
+    let product = {
+        id: btn.dataset.id,
+        title: btn.dataset.title,
+        price: parseFloat(btn.dataset.price),
+        image: btn.dataset.image
+    };
+    addToCart(product);
+}
+
+// cart rendering ----------------------------------------------------------
+function renderCart() {
+    let container = document.getElementById('cart-items');
+    let totalEl = document.getElementById('cart-total');
+    if (!container || !totalEl) return;
+    let cart = getCart();
+    container.innerHTML = '';
+    if (cart.length === 0) {
+        container.innerHTML = '<p>Seu carrinho está vazio.</p>';
+        totalEl.textContent = 'R$ 0,00';
+        return;
+    }
+    let total = 0;
+    cart.forEach(item => {
+        let itemEl = document.createElement('div');
+        itemEl.className = 'cart-item';
+        itemEl.innerHTML = `
+            <img src="${item.image || ''}" alt="${item.title}" width="60" height="60">
+            <span class="cart-title">${item.title}</span>
+            <input type="number" min="1" value="${item.qty}" data-id="${item.id}" class="cart-qty">
+            <span class="cart-price">R$ ${(item.price || 0).toFixed(2)}</span>
+            <button data-id="${item.id}" class="cart-remove">×</button>
+        `;
+        container.appendChild(itemEl);
+        total += (item.price || 0) * item.qty;
+    });
+    totalEl.textContent = 'R$ ' + total.toFixed(2);
+    // attach listeners
+    container.querySelectorAll('.cart-remove').forEach(btn => {
+        btn.addEventListener('click', () => {
+            removeFromCart(btn.dataset.id);
+        });
+    });
+    container.querySelectorAll('.cart-qty').forEach(input => {
+        input.addEventListener('change', () => {
+            updateQuantity(input.dataset.id, parseInt(input.value, 10));
+        });
+    });
+}
+
+function removeFromCart(id) {
+    let cart = getCart().filter(i => i.id !== id);
+    saveCart(cart);
+    renderCart();
+}
+
+function updateQuantity(id, qty) {
+    if (qty < 1) return;
+    let cart = getCart();
+    let item = cart.find(i => i.id === id);
+    if (item) {
+        item.qty = qty;
+        saveCart(cart);
+        renderCart();
+    }
+}
+
+// generic initializer ----------------------------------------------------
+document.addEventListener('DOMContentLoaded', () => {
+    // attach handlers to "add to cart" buttons that use data-* attributes
+    document.querySelectorAll('.add-to-cart').forEach(btn => {
+        btn.addEventListener('click', () => {
+            // try to build product info from dataset; if missing, fall back to DOM
+            let title = btn.dataset.title || '';
+            let price = btn.dataset.price ? parseFloat(btn.dataset.price) : NaN;
+            let image = btn.dataset.image || '';
+            let id = btn.dataset.id || '';
+            // when info is missing, look at page structure
+            if (!title) {
+                const h3 = btn.closest('.produto-descricao')?.querySelector('h3');
+                if (h3) title = h3.textContent.replace(':','').trim();
+            }
+            if (isNaN(price) || price === 0) {
+                const strong = btn.closest('.produto-descricao')?.querySelector('strong');
+                if (strong) {
+                    let txt = strong.textContent.replace(/[^0-9,\.]/g,'').replace(',','.');
+                    price = parseFloat(txt) || 0;
+                }
+            }
+            if (!image) {
+                image = document.getElementById('banner_produto')?.src || '';
+            }
+            if (!id) {
+                id = title.toLowerCase().replace(/\s+/g,'_').replace(/[^a-z0-9_]/g,'');
+            }
+            let product = { id, title, price, image };
+            addToCart(product);
+        });
+    });
+
+    // if cart page present render it
+    if (document.getElementById('cart-items')) {
+        renderCart();
+    }
+});
 if (nextBtn) nextBtn.addEventListener('click', nextImage);
 if (prevBtn) prevBtn.addEventListener('click', prevImage);
