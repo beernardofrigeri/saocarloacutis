@@ -120,12 +120,14 @@ function adicionar_carrinho() {
 function renderCart() {
     let container = document.getElementById('cart-items');
     let totalEl = document.getElementById('cart-total');
+    let checkoutBtn = document.getElementById('checkout-btn');
     if (!container || !totalEl) return;
     let cart = getCart();
     container.innerHTML = '';
     if (cart.length === 0) {
         container.innerHTML = '<p>Seu carrinho está vazio.</p>';
-        totalEl.textContent = 'R$ 0,00';
+        totalEl.textContent = 'R$ 0,00';
+        if (checkoutBtn) checkoutBtn.style.display = 'none';
         return;
     }
     let total = 0;
@@ -142,8 +144,7 @@ function renderCart() {
         container.appendChild(itemEl);
         total += (item.price || 0) * item.qty;
     });
-    totalEl.textContent = 'R$ ' + total.toFixed(2);
-    // attach listeners
+    totalEl.textContent = 'R$ ' + total.toFixed(2);    if (checkoutBtn) checkoutBtn.style.display = 'block';    // attach listeners
     container.querySelectorAll('.cart-remove').forEach(btn => {
         btn.addEventListener('click', () => {
             removeFromCart(btn.dataset.id);
@@ -183,24 +184,46 @@ document.addEventListener('DOMContentLoaded', () => {
             let price = btn.dataset.price ? parseFloat(btn.dataset.price) : NaN;
             let image = btn.dataset.image || '';
             let id = btn.dataset.id || '';
+            
             // when info is missing, look at page structure
             if (!title) {
                 const h3 = btn.closest('.produto-descricao')?.querySelector('h3');
                 if (h3) title = h3.textContent.replace(':','').trim();
             }
+            
+            // Try multiple ways to find the price
             if (isNaN(price) || price === 0) {
-                const strong = btn.closest('.produto-descricao')?.querySelector('strong');
+                const strong = btn.closest('.produto-descricao')?.querySelector('strong') ||
+                               btn.closest('div')?.querySelector('strong');
                 if (strong) {
                     let txt = strong.textContent.replace(/[^0-9,\.]/g,'').replace(',','.');
                     price = parseFloat(txt) || 0;
                 }
+                // Also try to find price in parent divs
+                if (isNaN(price) || price === 0) {
+                    let parent = btn.closest('div');
+                    if (parent) {
+                        let allText = parent.textContent;
+                        let priceMatch = allText.match(/R\$?\s*([0-9,\.]+)/);
+                        if (priceMatch) {
+                            let priceStr = priceMatch[1].replace(',', '.');
+                            price = parseFloat(priceStr) || 0;
+                        }
+                    }
+                }
             }
+            
+            // Try multiple ways to find the image
             if (!image) {
-                image = document.getElementById('banner_produto')?.src || '';
+                image = btn.closest('.produto-descricao')?.querySelector('img')?.src ||
+                        btn.closest('div')?.querySelector('img')?.src ||
+                        document.getElementById('banner_produto')?.src || '';
             }
+            
             if (!id) {
                 id = title.toLowerCase().replace(/\s+/g,'_').replace(/[^a-z0-9_]/g,'');
             }
+            
             let product = { id, title, price, image };
             addToCart(product);
         });
@@ -209,7 +232,63 @@ document.addEventListener('DOMContentLoaded', () => {
     // if cart page present render it
     if (document.getElementById('cart-items')) {
         renderCart();
+        setupCheckout();
     }
 });
+
+// Checkout functionality
+function setupCheckout() {
+    let checkoutBtn = document.getElementById('checkout-btn');
+    if (checkoutBtn) {
+        checkoutBtn.addEventListener('click', startCheckout);
+    }
+}
+
+function startCheckout() {
+    let cart = getCart();
+    if (cart.length === 0) {
+        alert('Seu carrinho está vazio!');
+        return;
+    }
+    
+    // Show loading modal
+    let modal = document.getElementById('loading-modal');
+    if (!modal) {
+        modal = document.createElement('div');
+        modal.id = 'loading-modal';
+        modal.className = 'loading-modal show';
+        modal.innerHTML = `
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+            <p class="loading-text">Processando compra...</p>
+        `;
+        document.body.appendChild(modal);
+    } else {
+        modal.classList.add('show');
+    }
+    
+    let progressFill = modal.querySelector('.progress-fill');
+    let progress = 0;
+    
+    let interval = setInterval(() => {
+        progress += Math.random() * 40;
+        if (progress > 90) progress = 90;
+        progressFill.style.width = progress + '%';
+    }, 100);
+    
+    setTimeout(() => {
+        clearInterval(interval);
+        progressFill.style.width = '100%';
+        
+        setTimeout(() => {
+            modal.classList.remove('show');
+            localStorage.removeItem('cart');
+            alert('Compra finalizada com sucesso! Obrigado pela compra.');
+            location.reload();
+        }, 500);
+    }, 2000);
+}
+
 if (nextBtn) nextBtn.addEventListener('click', nextImage);
 if (prevBtn) prevBtn.addEventListener('click', prevImage);

@@ -1,6 +1,7 @@
 var imagens = [
     "../../img/hs50_pro_corsair.webp",
     "../../img/hs50_pro_corsair_verde.webp",
+    "../../img/hs50_pro_corsair_carbon.webp"
 ];
 var indice = 0;
 var TRANSITION_MS = 150;
