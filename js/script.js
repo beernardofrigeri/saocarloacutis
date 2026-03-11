@@ -292,3 +292,53 @@ function startCheckout() {
 
 if (nextBtn) nextBtn.addEventListener('click', nextImage);
 if (prevBtn) prevBtn.addEventListener('click', prevImage);
+
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.querySelector('#caixa_segundaria_contato form');
+    if (!form) return;
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const dados = {
+            nome: form.nome.value,
+            email: form.email.value,
+            telefone: form.telefone.value,
+            assunto: form.assunto.value,
+            mensagem: form.mensagem.value,
+        };
+
+        try {
+            const resposta = await fetch('http://localhost:3000/contato', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(dados),
+            });
+
+            const resultado = await resposta.json();
+
+            if (resultado.ok) {
+                alert('Mensagem enviada com sucesso!');
+                form.reset();
+            } else {
+                alert('Erro ao enviar. Tente novamente.');
+            }
+        } catch (err) {
+            alert('Não foi possível conectar ao servidor.');
+        }
+    });
+
+    const btnWhatsapp = document.getElementById('btn-whatsapp');
+    if (btnWhatsapp) {
+        btnWhatsapp.addEventListener('click', () => {
+            const nome = document.getElementById('nome').value;
+            const email = document.getElementById('email').value;
+            const telefone = document.getElementById('telefone').value;
+            const assunto = document.getElementById('assunto').value;
+            const mensagem = document.getElementById('mensagem').value;
+
+            const texto = `Olá! Meu nome é ${nome}.%0AE-mail: ${email}%0ATelefone: ${telefone}%0AAssunto: ${assunto}%0AMensagem: ${mensagem}`;
+            window.open(`https://wa.me/555491475125?text=${texto}`, '_blank');
+        });
+    }
+});
