@@ -309,7 +309,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         try {
-            const resposta = await fetch('https://scaperifericos.onrender.com/', {
+            const resposta = await fetch('https://scaperifericos.onrender.com/contato', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(dados),
