@@ -1,23 +1,30 @@
 const express = require("express");
 const cors = require("cors");
-const { Resend } = require("resend");
+const nodemailer = require("nodemailer");
 require("dotenv").config();
 
 const app = express();
-const resend = new Resend(process.env.RESEND_API_KEY);
 
 app.use(cors({
     origin: 'https://beernardofrigeri.github.io'
 }));
 app.use(express.json());
 
+const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS,
+    }
+});
+
 app.post("/contato", async (req, res) => {
     const { nome, email, telefone, assunto, mensagem } = req.body;
 
     try {
-        await resend.emails.send({
-            from: 'onboarding@resend.dev',
-            to: 'be.frigeri@gmail.com',
+        await transporter.sendMail({
+            from: process.env.EMAIL_USER,
+            to: 'scaperifericos@gmail.com',
             replyTo: email,
             subject: `[SCA Periféricos] ${assunto}`,
             html: `
