@@ -297,36 +297,26 @@ document.addEventListener('DOMContentLoaded', () => {
     const form = document.querySelector('#caixa_segundaria_contato form');
     if (!form) return;
 
-    form.addEventListener('submit', async (e) => {
-        e.preventDefault();
+    form.addEventListener('submit', (e) => {
+    e.preventDefault();
 
-        const dados = {
-            nome: form.nome.value,
-            email: form.email.value,
-            telefone: form.telefone.value,
-            assunto: form.assunto.value,
-            mensagem: form.mensagem.value,
-        };
+    const templateParams = {
+        nome: form.nome.value,
+        email: form.email.value,
+        telefone: form.telefone.value,
+        assunto: form.assunto.value,
+        mensagem: form.mensagem.value,
+    };
 
-        try {
-            const resposta = await fetch('https://scaperifericos.onrender.com/contato', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(dados),
-            });
-
-            const resultado = await resposta.json();
-
-            if (resultado.ok) {
-                alert('Mensagem enviada com sucesso!');
-                form.reset();
-            } else {
-                alert('Erro ao enviar. Tente novamente.');
-            }
-        } catch (err) {
-            alert('Não foi possível conectar ao servidor.');
-        }
-    });
+    emailjs.send('service_d11c0t4', 'ieryjpr', templateParams)
+        .then(() => {
+            alert('Mensagem enviada com sucesso!');
+            form.reset();
+        })
+        .catch(() => {
+            alert('Erro ao enviar. Tente novamente.');
+        });
+});
 
     const btnWhatsapp = document.getElementById('btn-whatsapp');
     if (btnWhatsapp) {
