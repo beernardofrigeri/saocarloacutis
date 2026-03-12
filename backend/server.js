@@ -17,7 +17,7 @@ app.post("/contato", async (req, res) => {
     try {
         await resend.emails.send({
             from: 'onboarding@resend.dev',
-            to: 'scaperifericos@gmail.com',
+            to: 'be.frigeri@gmail.com',
             replyTo: email,
             subject: `[SCA Periféricos] ${assunto}`,
             html: `
