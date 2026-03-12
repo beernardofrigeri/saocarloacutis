@@ -308,7 +308,7 @@ document.addEventListener('DOMContentLoaded', () => {
         mensagem: form.mensagem.value,
     };
 
-    emailjs.send('service_d11c0t4', 'ieryjpr', templateParams)
+    emailjs.send('service_d11c0t4', 'template_ieryjpr', templateParams)
         .then(() => {
             alert('Mensagem enviada com sucesso!');
             form.reset();
