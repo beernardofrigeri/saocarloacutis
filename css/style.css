@@ -15,8 +15,9 @@ header {
     border-radius: 0px 0px 10px 10px;
     display: flex;
     align-items: center;
-    justify-content: center;
-    padding: 10px 20px;}
+    justify-content: space-between;
+    padding: 10px 20px;
+    gap: 20px;}
 nav {
     display: flex;
     gap: 12px;
@@ -24,7 +25,8 @@ nav {
     width: 100%;
     padding: 0 20px;
     box-sizing: border-box;
-    margin-left: 460px;}
+    margin-left: 0; /* removido offset fixo */
+    flex: 1;}
 nav ul {
     list-style: none;
     margin: 0;
@@ -32,7 +34,9 @@ nav ul {
     display: flex;
     gap: 12px;
     width: 100%;
-    align-items: center;}
+    align-items: center;
+    justify-content: center; /* centraliza os links; o carrinho ainda pode ser empurrado com last-child */
+}
 nav ul li {
     position: relative;}
 nav a {
@@ -45,8 +49,6 @@ nav a {
 nav a:hover {
     color: red;
     background-color: rgb(255, 223, 15);}
-nav ul li:last-child {
-    margin-left: auto;}
 #carrinho-conf {
     width: 50px;
     height: 50px;
