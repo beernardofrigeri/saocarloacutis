@@ -157,7 +157,7 @@ button:hover {
     transform: translateY(-3px);
     background-color: red;}
 /* secao produtos */
-.area_principal, .area_principal {
+.area_principal, .area_principal_2 {
     display: flex;
     justify-content: center;
     width: 100%;
@@ -205,7 +205,14 @@ button:hover {
 .area_principal_2 {
     background-color: #f9f9f9;
     border-radius: 8px;
-    padding: 20px 10px;}
+    padding: 20px 10px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: 20px 0;
+    gap: 20px;
+    align-items: flex-start;
+    box-sizing: border-box;}
 /* area secundaria do index */
 .area_segundaria {
     width: 100%;
@@ -279,7 +286,8 @@ p.descricao-produto {
     padding: 16px;
     border-radius: 8px;}
 /* secao formulario */
-#caixa_principal_contato, #caixa_segundaria_contato, #caixa_tercearia_contato {
+.caixa_principal_contato, .caixa_segundaria_contato, .caixa_tercearia_contato {
+    border: 1px solid #ccc;
     max-width: 900px;
     margin: 20px auto;
     background-color: rgb(236, 236, 236);
@@ -288,18 +296,29 @@ p.descricao-produto {
     box-shadow: 0 0 10px rgba(69, 69, 69, 0.5);
     width: 100%;
     box-sizing: border-box;}
-#caixa_segundaria_contato input,
-#caixa_segundaria_contato textarea {
+.caixa_segundaria_contato input,
+.caixa_segundaria_contato textarea {
     width: 100%;
     box-sizing: border-box;
     padding: 10px;
     font-size: 16px;
     border-radius: 10px;
     border: gold 2px solid;}
-#caixa_tercearia_contato iframe {
+.caixa_tercearia_contato iframe {
     border-radius: 15px;}
-#localizacao iframe {
+.localizacao iframe {
     border-radius: 10px;}
+#btn-whatsapp {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 10px;
+    border: lightblue 2px solid;}
+#btn-whatsapp:hover {
+    transform: 0.3s ease;
+    background-color: lightcyan;
+    color: black;}
 input[type="submit"] {
     background-color: gold;
     color: white;
@@ -425,6 +444,6 @@ footer {
 }
 /* reponsivel */
 @media (max-width: 900px) {
-    #area_principal, #area_principal_2, #area_segundaria {
+    .area_principal, .area_principal_2, .area_segundaria {
         flex-direction: column;
     }}
