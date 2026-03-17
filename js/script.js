@@ -294,29 +294,30 @@ if (nextBtn) nextBtn.addEventListener('click', nextImage);
 if (prevBtn) prevBtn.addEventListener('click', prevImage);
 
 document.addEventListener('DOMContentLoaded', () => {
-    const form = document.querySelector('#caixa_segundaria_contato form');
+    const form = document.querySelector('.caixa_segundaria_contato form'); // ← ponto, não #
+
     if (!form) return;
 
     form.addEventListener('submit', (e) => {
-    e.preventDefault();
+        e.preventDefault();
 
-    const templateParams = {
-        nome: form.nome.value,
-        email: form.email.value,
-        telefone: form.telefone.value,
-        assunto: form.assunto.value,
-        mensagem: form.mensagem.value,
-    };
+        const templateParams = {
+            nome: form.nome.value,
+            email: form.email.value,
+            telefone: form.telefone.value,
+            assunto: form.assunto.value,
+            mensagem: form.mensagem.value,
+        };
 
-    emailjs.send('service_d11c0t4', 'template_uvs2glb', templateParams)
-        .then(() => {
-            alert('Mensagem enviada com sucesso!');
-            form.reset();
-        })
-        .catch(() => {
-            alert('Erro ao enviar. Tente novamente.');
-        });
-});
+        emailjs.send('service_d11c0t4', 'template_uvs2glb', templateParams)
+            .then(() => {
+                alert('Mensagem enviada com sucesso!');
+                form.reset();
+            })
+            .catch(() => {
+                alert('Erro ao enviar. Tente novamente.');
+            });
+    });
 
     const btnWhatsapp = document.getElementById('btn-whatsapp');
     if (btnWhatsapp) {
@@ -327,7 +328,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const assunto = document.getElementById('assunto').value;
             const mensagem = document.getElementById('mensagem').value;
 
-            const texto = `Olá! Meu nome é ${nome}.%0AE-mail: ${email}%0ATelefone: ${telefone}%0AAssunto: ${assunto}%0AMensagem: ${mensagem}`;
+            const texto = encodeURIComponent( // ← encodeURIComponent aqui
+                `Olá! Meu nome é ${nome}.\nE-mail: ${email}\nTelefone: ${telefone}\nAssunto: ${assunto}\nMensagem: ${mensagem}`
+            );
             window.open(`https://wa.me/555491475125?text=${texto}`, '_blank');
         });
     }
