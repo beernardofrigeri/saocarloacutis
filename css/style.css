@@ -203,7 +203,7 @@ button:hover {
 .area_principal > div p, .area_principal > div small {
     margin: 6px 0;}
 .area_principal_2 {
-    background-color: #f9f9f9;
+    background-color: #f4f4f4;
     border-radius: 8px;
     padding: 20px 10px;
     display: flex;
@@ -341,9 +341,7 @@ footer {
 #cart-items {
     max-height: 500px;
     overflow-y: auto;
-    margin-bottom: 20px;
-}
-
+    margin-bottom: 20px;}
 .cart-item {
     display: flex;
     align-items: center;
@@ -351,36 +349,26 @@ footer {
     padding: 12px;
     background: #fff;
     border-radius: 8px;
-    margin-bottom: 10px;
-}
-
+    margin-bottom: 10px;}
 .cart-item img {
     width: 60px;
     height: 60px;
     object-fit: cover;
-    border-radius: 8px;
-}
-
+    border-radius: 8px;}
 .cart-qty {
     width: 50px;
     padding: 6px;
     border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
+    border-radius: 4px;}
 .cart-remove {
     background-color: #ff6b6b;
     color: white;
     padding: 6px 10px;
     border: none;
     border-radius: 4px;
-    cursor: pointer;
-}
-
+    cursor: pointer;}
 .cart-remove:hover {
-    background-color: #ff5252;
-}
-
+    background-color: #ff5252;}
 #checkout-btn {
     background-color: #28a745;
     color: white;
@@ -391,18 +379,12 @@ footer {
     cursor: pointer;
     width: 100%;
     margin-top: 20px;
-    transition: background-color 0.3s ease;
-}
-
+    transition: background-color 0.3s ease;}
 #checkout-btn:hover {
-    background-color: #218838;
-}
-
+    background-color: #218838;}
 #checkout-btn:disabled {
     background-color: #ccc;
-    cursor: not-allowed;
-}
-
+    cursor: not-allowed;}
 .loading-modal {
     display: none;
     position: fixed;
@@ -414,34 +396,25 @@ footer {
     z-index: 1000;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-}
-
+    flex-direction: column;}
 .loading-modal.show {
-    display: flex;
-}
-
+    display: flex;}
 .progress-bar {
     width: 300px;
     height: 10px;
     background-color: #ddd;
     border-radius: 8px;
     overflow: hidden;
-    margin-bottom: 20px;
-}
-
+    margin-bottom: 20px;}
 .progress-fill {
     height: 100%;
     background-color: #28a745;
     width: 0%;
-    transition: width 0.1s linear;
-}
-
+    transition: width 0.1s linear;}
 .loading-text {
     color: white;
     font-size: 18px;
-    margin-top: 20px;
-}
+    margin-top: 20px;}
 /* reponsivel */
 @media (max-width: 900px) {
     .area_principal, .area_principal_2, .area_segundaria {
