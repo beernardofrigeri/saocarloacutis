@@ -48,7 +48,8 @@ nav a {
     transition: color 200ms ease, background-color 200ms ease, transform 120ms ease;}
 nav a:hover {
     color: red;
-    background-color: rgb(255, 223, 15);}
+    background-color: rgb(255, 223, 15);
+    font-style: italic;}
 #carrinho-conf {
     width: 50px;
     height: 50px;
