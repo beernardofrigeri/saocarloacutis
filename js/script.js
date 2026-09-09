@@ -88,6 +88,18 @@ function getCart() {
 function saveCart(cart) {
     localStorage.setItem('cart', JSON.stringify(cart));
 }
+function formatCurrency(value) {
+    return new Intl.NumberFormat('pt-BR', {
+        style: 'currency',
+        currency: 'BRL'
+    }).format(Number(value) || 0);
+}
+function getCoupon() {
+    return localStorage.getItem('cartCoupon') || '';
+}
+function getDiscountRate() {
+    return getCoupon() === 'SCA10' ? 0.1 : 0;
+}
 function addToCart(product) {
     if (!product || !product.id) return;
     let cart = getCart();
@@ -119,6 +131,8 @@ function adicionar_carrinho() {
 // cart rendering ----------------------------------------------------------
 function renderCart() {
     let container = document.getElementById('cart-items');
+    let subtotalEl = document.getElementById('cart-subtotal');
+    let discountEl = document.getElementById('cart-discount');
     let totalEl = document.getElementById('cart-total');
     let checkoutBtn = document.getElementById('checkout-btn');
     if (!container || !totalEl) return;
@@ -126,7 +140,9 @@ function renderCart() {
     container.innerHTML = '';
     if (cart.length === 0) {
         container.innerHTML = '<p>Seu carrinho está vazio.</p>';
-        totalEl.textContent = 'R$ 0,00';
+        if (subtotalEl) subtotalEl.textContent = formatCurrency(0);
+        if (discountEl) discountEl.textContent = formatCurrency(0);
+        totalEl.textContent = formatCurrency(0);
         if (checkoutBtn) checkoutBtn.style.display = 'none';
         return;
     }
@@ -138,13 +154,17 @@ function renderCart() {
             <img src="${item.image || ''}" alt="${item.title}" width="60" height="60">
             <span class="cart-title">${item.title}</span>
             <input type="number" min="1" value="${item.qty}" data-id="${item.id}" class="cart-qty">
-            <span class="cart-price">R$ ${(item.price || 0).toFixed(2)}</span>
+            <span class="cart-price">${formatCurrency(item.price)}</span>
             <button data-id="${item.id}" class="cart-remove">×</button>
         `;
         container.appendChild(itemEl);
         total += (item.price || 0) * item.qty;
     });
-    totalEl.textContent = 'R$ ' + total.toFixed(2);    if (checkoutBtn) checkoutBtn.style.display = 'block';    // attach listeners
+    let discount = total * getDiscountRate();
+    if (subtotalEl) subtotalEl.textContent = formatCurrency(total);
+    if (discountEl) discountEl.textContent = formatCurrency(discount);
+    totalEl.textContent = formatCurrency(total - discount);
+    if (checkoutBtn) checkoutBtn.style.display = 'block';    // attach listeners
     container.querySelectorAll('.cart-remove').forEach(btn => {
         btn.addEventListener('click', () => {
             removeFromCart(btn.dataset.id);
@@ -242,6 +262,25 @@ function setupCheckout() {
     if (checkoutBtn) {
         checkoutBtn.addEventListener('click', startCheckout);
     }
+    let couponForm = document.getElementById('coupon-form');
+    if (couponForm) {
+        couponForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            let input = document.getElementById('coupon-code');
+            let message = document.getElementById('coupon-message');
+            let code = input.value.trim().toUpperCase();
+            if (code === 'SCA10') {
+                localStorage.setItem('cartCoupon', code);
+                message.textContent = 'Cupom aplicado: 10% de desconto.';
+                message.style.color = '#16803c';
+            } else {
+                localStorage.removeItem('cartCoupon');
+                message.textContent = 'Cupom inválido.';
+                message.style.color = '#b00020';
+            }
+            renderCart();
+        });
+    }
 }
 
 function startCheckout() {
@@ -284,6 +323,7 @@ function startCheckout() {
         setTimeout(() => {
             modal.classList.remove('show');
             localStorage.removeItem('cart');
+            localStorage.removeItem('cartCoupon');
             alert('Compra finalizada com sucesso! Obrigado pela compra.');
             location.reload();
         }, 500);

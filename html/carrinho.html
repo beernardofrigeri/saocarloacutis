@@ -29,18 +29,36 @@
         </header>
         <main>
             <h1>Seu Carrinho:</h1>
-                <section class="area_principal">
-                    <div class="caixa_principal_contato">
-                        <h3>Seus Produtos:</h3>
-                        <!-- produtos serão inseridos aqui -->
-                        <div class="cart-items"></div>                        <button id="checkout-btn" style="display: none;">Finalizar Compra</button>                    </div>
+            <div class="cart-layout">
+                <section class="cart-products caixa_principal_contato">
+                    <h3>Seus Produtos:</h3>
+                    <div id="cart-items"></div>
                 </section>
-                <section class="area_segundaria">
-                    <div class="caixa_segundaria_contato">
-                            <h3>Total:</h3>
-                            <p id="cart-total">R$ 0,00</p>
+                <aside class="cart-summary" aria-label="Resumo da compra">
+                    <h3>Resumo da compra</h3>
+                    <form id="coupon-form" class="coupon-form">
+                        <label for="coupon-code">Cupom de desconto</label>
+                        <div class="coupon-controls">
+                            <input id="coupon-code" type="text" placeholder="Digite seu cupom" autocomplete="off">
+                            <button type="submit">Aplicar</button>
                         </div>
-                </section>
+                        <p id="coupon-message" role="status"></p>
+                    </form>
+                    <div class="summary-line">
+                        <span>Subtotal</span>
+                        <strong id="cart-subtotal">R$ 0,00</strong>
+                    </div>
+                    <div class="summary-line discount-line">
+                        <span>Desconto</span>
+                        <strong id="cart-discount">R$ 0,00</strong>
+                    </div>
+                    <div class="summary-total">
+                        <span>Total</span>
+                        <strong id="cart-total">R$ 0,00</strong>
+                    </div>
+                    <button id="checkout-btn" style="display: none;">Finalizar Compra</button>
+                </aside>
+            </div>
     </main>
     <footer>
         <p>&copy; Desenvolvido por Bernardo Girardi Frigeri - Senac 2025</p>

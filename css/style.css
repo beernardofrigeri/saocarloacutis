@@ -8,7 +8,16 @@ body {
     padding: 0;
     background-color: #f4f4f4;
     font-family: "Outfit", sans-serif;
-    color: black;}
+    color: black;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;}
+article {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;}
+main {
+    flex: 1;}
 /* header e nav */
 header {
     background-color: lightgrey;
@@ -338,6 +347,21 @@ footer {
     text-align: center;
     margin-top: 30px;}
 /* Shopping Cart */
+.cart-layout {
+    max-width: 1180px;
+    margin: 20px auto;
+    padding: 0 10px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 340px;
+    gap: 20px;
+    align-items: start;
+}
+
+.cart-products {
+    margin: 0;
+    max-width: none;
+}
+
 #cart-items {
     max-height: 500px;
     overflow-y: auto;
@@ -379,6 +403,73 @@ footer {
 
 .cart-remove:hover {
     background-color: #ff5252;
+}
+
+.cart-summary {
+    border: 1px solid #ccc;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(69, 69, 69, 0.18);
+}
+
+.cart-summary h3 {
+    margin-top: 0;
+}
+
+.coupon-form {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 16px;
+    margin-bottom: 16px;
+}
+
+.coupon-form label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+}
+
+.coupon-controls {
+    display: flex;
+    gap: 8px;
+}
+
+.coupon-controls input {
+    min-width: 0;
+    flex: 1;
+    padding: 9px;
+    border: 1px solid #bbb;
+    border-radius: 6px;
+    font: inherit;
+}
+
+.coupon-controls button {
+    background-color: #333;
+    white-space: nowrap;
+}
+
+#coupon-message {
+    min-height: 20px;
+    margin: 8px 0 0;
+    font-size: 14px;
+}
+
+.summary-line,
+.summary-total {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    margin: 12px 0;
+}
+
+.discount-line strong {
+    color: #16803c;
+}
+
+.summary-total {
+    border-top: 1px solid #ddd;
+    padding-top: 16px;
+    font-size: 20px;
 }
 
 #checkout-btn {
@@ -446,4 +537,8 @@ footer {
 @media (max-width: 900px) {
     .area_principal, .area_principal_2, .area_segundaria {
         flex-direction: column;
-    }}
+    }
+    .cart-layout {
+        grid-template-columns: 1fr;
+    }
+}
