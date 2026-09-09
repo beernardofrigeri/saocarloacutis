@@ -117,13 +117,20 @@ h2 {
 #banner-desc-price, #banner_price {
     font-weight: bold;}
 #banner {
-    width: 515px;
-    height: 500px;
+    width: 100%;
+    max-width: 515px;
+    height: auto;
+    aspect-ratio: 515 / 500;
     object-fit: cover;
     border-radius: 12px;
     box-shadow: 0 6px 18px rgba(0,0,0,0.15);
     transition: opacity 150ms ease, transform 300ms ease;
     opacity: 1;}
+#banner_left {
+    width: min(240px, 100%);
+    height: auto;
+    aspect-ratio: 240 / 250;
+    object-fit: cover;}
 aside {
     background-color: rgb(211, 211, 211);
     padding: 16px;
@@ -533,12 +540,113 @@ footer {
     font-size: 18px;
     margin-top: 20px;
 }
-/* reponsivel */
+/* responsivo */
+@media (max-width: 1100px) {
+    .area_principal {
+        display: grid;
+        grid-template-columns: minmax(180px, 0.8fr) minmax(300px, 1.4fr) minmax(220px, 0.9fr);
+        align-items: start;
+    }
+
+    .area_principal > aside {
+        align-self: start;
+        width: auto;
+        height: auto;
+        margin-left: 0;
+    }
+
+    #area_banner {
+        order: 0;
+        max-width: 100%;
+        min-width: 0;
+        height: auto;
+    }
+}
+
 @media (max-width: 900px) {
+    header {
+        flex-direction: column;
+        padding: 10px;
+        gap: 8px;
+    }
+
+    nav {
+        padding: 0;
+    }
+
+    nav ul {
+        flex-wrap: wrap;
+        gap: 4px;
+    }
+
+    nav a {
+        font-size: 16px;
+        padding: 6px 7px;
+    }
+
     .area_principal, .area_principal_2, .area_segundaria {
+        display: flex;
         flex-direction: column;
     }
+
+    .area_principal > aside {
+        width: 100%;
+    }
+
+    #area_banner {
+        order: 0;
+    }
+
+    .produto-imagem {
+        flex-direction: column;
+    }
+
+    #banner_produto {
+        height: auto;
+        aspect-ratio: 515 / 567;
+    }
+
+    .produto-side {
+        width: 100%;
+    }
+
+    .produto-descricao-pro {
+        height: auto;
+    }
+
+    .cart-item {
+        flex-wrap: wrap;
+    }
+
     .cart-layout {
         grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    h1, h2 {
+        font-size: 21px;
+    }
+
+    #banner_desc {
+        flex-basis: auto;
+        margin-right: 0;
+    }
+
+    .produto-pagina {
+        padding: 0 10px;
+    }
+
+    .cart-layout {
+        padding: 0 6px;
+    }
+
+    .cart-products,
+    .cart-summary {
+        padding: 12px;
+    }
+
+    .coupon-controls {
+        flex-direction: column;
     }
 }
