@@ -21,20 +21,21 @@ main {
 /* header e nav */
 header {
     border-radius: 0px 0px 10px 10px;
-    display: flex;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
     align-items: center;
-    justify-content: space-between;
     padding: 10px 20px;
     gap: 20px;}
 nav {
+    grid-column: 2;
     display: flex;
     gap: 12px;
     align-items: center;
-    width: 100%;
-    padding: 0 20px;
+    width: max-content;
+    max-width: 100%;
+    padding: 0;
     box-sizing: border-box;
-    margin-left: 0; /* removido offset fixo */
-    margin-top: 20px;
+    margin-top: 8.5px;
     flex: 1;}
 nav ul {
     list-style: none;
@@ -42,9 +43,9 @@ nav ul {
     padding: 0;
     display: flex;
     gap: 12px;
-    width: 100%;
+    width: max-content;
     align-items: center;
-    justify-content: center; /* centraliza os links; o carrinho ainda pode ser empurrado com last-child */
+    justify-content: center;
 }
 nav ul li {
     position: relative;}
@@ -73,7 +74,7 @@ nav a:hover {
     transform: scale(1.2);}
 /* titulos */
 h1 {
-    background-color: rgb(182, 70, 70);
+    background-color: red;
     color: white;
     font-size: 25px;
     text-align: center;
@@ -81,7 +82,7 @@ h1 {
     font-style: italic;
 }
 h2 {
-    background-color: rgb(85, 85, 222);
+    background-color: blue;
     color: white;
     font-size: 25px;
     text-align: center;
@@ -130,7 +131,10 @@ h2 {
     width: min(240px, 100%);
     height: auto;
     aspect-ratio: 240 / 250;
-    object-fit: cover;}
+    object-fit: cover;
+    border-radius: 10px;}
+.preco-promocional {
+    font-size: large;}
 aside {
     background-color: rgb(211, 211, 211);
     padding: 16px;
@@ -261,6 +265,15 @@ p.titulo_produto {
 p.descricao-produto {
     font-size: 14px;
     color: black;}
+.preco {
+    font-size: large;
+    font-style: italic;}
+.desconto {
+    color: red;}
+.local-atual-mouses {
+    color: blue;}
+.local-atual-fones {
+    color: rgb(213, 164, 0);}
 /* paginas de detalhes dos produtos */
 #banner_produto {
     width: 100%;
@@ -302,6 +315,9 @@ p.descricao-produto {
     padding: 16px;
     border-radius: 8px;}
 /* secao formulario */
+.contato-instrucoes {
+    font-style: italic;
+}
 .caixa_principal_contato, .caixa_segundaria_contato, .caixa_tercearia_contato {
     border: 1px solid #ccc;
     max-width: 900px;
@@ -394,7 +410,6 @@ p.descricao-produto {
     border-radius: 9px;
     cursor: pointer;
     font-size: 16px;
-    font-style: italic;
     transition: color 0.25s ease;}
 .email-label {
     position: relative;
@@ -418,6 +433,7 @@ p.descricao-produto {
 .email-submit:hover {
     color: white;
     background-color: #a0a0a0;
+    font-style: italic;
 }
 .email-submit:hover .email-blade {
     transform: scaleX(1);
@@ -556,6 +572,7 @@ footer {
 }
 
 #checkout-btn {
+    display: none;
     background-color: #28a745;
     color: white;
     padding: 12px 24px;
@@ -641,18 +658,22 @@ footer {
 
 @media (max-width: 900px) {
     header {
+        display: flex;
         flex-direction: column;
         padding: 10px;
         gap: 8px;
     }
 
     nav {
+        width: 100%;
         padding: 0;
     }
 
     nav ul {
+        width: 100%;
         flex-wrap: wrap;
         gap: 4px;
+        justify-content: center;
     }
 
     nav a {

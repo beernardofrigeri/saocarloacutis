@@ -334,7 +334,7 @@ if (nextBtn) nextBtn.addEventListener('click', nextImage);
 if (prevBtn) prevBtn.addEventListener('click', prevImage);
 
 document.addEventListener('DOMContentLoaded', () => {
-    const form = document.querySelector('#caixa_segundaria_contato form');
+    const form = document.querySelector('.caixa_segundaria_contato form');
     if (!form) return;
 
     form.addEventListener('submit', (e) => {
@@ -367,8 +367,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const assunto = document.getElementById('assunto').value;
             const mensagem = document.getElementById('mensagem').value;
 
-            const texto = `Olá! Meu nome é ${nome}.%0AE-mail: ${email}%0ATelefone: ${telefone}%0AAssunto: ${assunto}%0AMensagem: ${mensagem}`;
-            window.open(`https://wa.me/555491475125?text=${texto}`, '_blank');
+            const texto = `Olá! Meu nome é ${nome}.\nE-mail: ${email}\nTelefone: ${telefone}\nAssunto: ${assunto}\nMensagem: ${mensagem}`;
+            window.open(`https://wa.me/555491475125?text=${encodeURIComponent(texto)}`, '_blank');
         });
     }
 });
