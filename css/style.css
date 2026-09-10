@@ -20,7 +20,6 @@ main {
     flex: 1;}
 /* header e nav */
 header {
-    background-color: lightgrey;
     border-radius: 0px 0px 10px 10px;
     display: flex;
     align-items: center;
@@ -35,6 +34,7 @@ nav {
     padding: 0 20px;
     box-sizing: border-box;
     margin-left: 0; /* removido offset fixo */
+    margin-top: 20px;
     flex: 1;}
 nav ul {
     list-style: none;
@@ -73,20 +73,20 @@ nav a:hover {
     transform: scale(1.2);}
 /* titulos */
 h1 {
-    background-color: red;
+    background-color: rgb(182, 70, 70);
     color: white;
     font-size: 25px;
     text-align: center;
-    border-radius: 10px;
-    margin: 0 5px;
-    margin-top: 10px;}
+    margin-top: 10px;
+    font-style: italic;
+}
 h2 {
-    background-color: blue;
+    background-color: rgb(85, 85, 222);
     color: white;
     font-size: 25px;
     text-align: center;
-    border-radius: 10px;
-    margin: 0 5px;}
+    font-style: italic;
+}
 /* secao banner */
 #area_banner { 
     display: flex;
@@ -319,33 +319,109 @@ p.descricao-produto {
     padding: 10px;
     font-size: 16px;
     border-radius: 10px;
-    border: gold 2px solid;}
+    border: rgb(195, 194, 193) 2px solid;
+    max-width: 100%;
+    }
+    .caixa_segundaria_contato textarea {
+        resize: vertical;
+        min-height: 110px;
+        max-height: 300px;
+}
 .caixa_tercearia_contato iframe {
     border-radius: 15px;}
 .localizacao iframe {
     border-radius: 10px;}
 #btn-whatsapp {
-    width: 100%;
-    box-sizing: border-box;
+    width: 45px;
+    min-width: 45px;
+    height: 44px;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    overflow: hidden;
+    vertical-align: middle;
     padding: 10px;
     font-size: 16px;
-    border-radius: 10px;
-    border: lightblue 2px solid;}
+    border-radius: 100px;
+    margin-left: 50px;
+    background-color: rgb(195, 238, 195);
+    color: green;
+    transition: width 0.35s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.25s ease;
+}
+#btn-whatsapp svg {
+    display: block;
+    flex: 0 0 25px;
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+#btn-whatsapp::after {
+    content: "Whatsapp!";
+    position: absolute;
+    left: 52px;
+    top: 50%;
+    color: #25D366;
+    font-size: 14px;
+    font-weight: bold;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(8px, -50%);
+    transition: opacity 0.25s ease, transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
 #btn-whatsapp:hover {
-    transform: 0.3s ease;
-    background-color: lightcyan;
-    color: black;}
-input[type="submit"] {
-    background-color: gold;
+    width: 132px;
+    color: #25D366;
+    background-color: transparent;
+}
+#btn-whatsapp:hover svg {
+    transform: translateX(-34px);
+}
+#btn-whatsapp:hover::after {
+    opacity: 1;
+    transform: translate(0, -50%);
+}
+.email-submit {
+    width: 75%;
+    height: 44px;
+    position: relative;
+    overflow: hidden;
+    vertical-align: middle;
+    background-color: #a0a0a0;
     color: white;
     padding: 10px 14px;
     border: none;
-    border-radius: 8px;
+    border-radius: 9px;
     cursor: pointer;
     font-size: 16px;
-    transition: background-color 0.3s ease;}
-input[type="submit"]:hover {
-    background-color: goldenrod;}
+    font-style: italic;
+    transition: color 0.25s ease;}
+.email-label {
+    position: relative;
+    z-index: 2;
+}
+.email-blade {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -5%;
+    width: 130%;
+    transform: scaleX(0);
+    transform-origin: left center;
+    clip-path: polygon(0 0, 100% 0, 82% 100%, 0 100%);
+    transition: transform 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.blade-one {
+    background: rgb(5, 84, 175);
+    transition-delay: 0s;
+}
+.email-submit:hover {
+    color: white;
+    background-color: #a0a0a0;
+}
+.email-submit:hover .email-blade {
+    transform: scaleX(1);
+}
 /* footer */
 footer {
     background: #000;
@@ -654,11 +730,6 @@ footer {
 @media (max-width: 600px) {
     header {
         padding: 8px 6px;
-    }
-
-    #logo img {
-        width: 72px;
-        height: 144px;
     }
 
     nav ul {
