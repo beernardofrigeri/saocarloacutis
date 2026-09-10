@@ -233,6 +233,30 @@ button:hover {
     gap: 20px;
     align-items: flex-start;
     box-sizing: border-box;}
+.area-home {
+    display: grid;
+    grid-template-columns: minmax(220px, 240px) minmax(0, 515px) minmax(240px, 260px);
+    max-width: 1055px;
+    margin: 20px auto;
+    align-items: start;
+}
+.area-home > aside {
+    width: auto;
+    height: auto;
+    margin-left: 0;
+}
+.area-home > #area_banner {
+    width: 100%;
+    height: auto;
+    min-width: 0;
+    max-width: 515px;
+    flex: none;
+}
+.area-home > #banner_desc {
+    width: auto;
+    min-width: 0;
+    margin-right: 0;
+}
 /* area secundaria do index */
 .area_segundaria {
     width: 100%;
@@ -646,6 +670,10 @@ footer {
         align-items: start;
     }
 
+    .area-home {
+        grid-template-columns: minmax(200px, 240px) minmax(0, 1fr) minmax(220px, 260px);
+    }
+
     .area_principal > aside {
         align-self: start;
         width: auto;
@@ -689,6 +717,17 @@ footer {
     .area_principal, .area_principal_2, .area_segundaria {
         display: flex;
         flex-direction: column;
+    }
+
+    .area-home {
+        display: flex;
+        flex-direction: column;
+        max-width: none;
+        margin: 20px 0;
+    }
+
+    .area-home > #area_banner {
+        max-width: 100%;
     }
 
     .area_principal > aside {
