@@ -306,6 +306,11 @@ p.descricao-produto {
     border-radius: 8px;}
 .produto-descricao-pro {
     height: 315px;}
+.produto-video {
+    width: 100%;
+    max-width: 500px;
+    height: 200px;
+    border: 0;}
 .produto-especificacoes {
     background-color: white;
     padding: 16px;
